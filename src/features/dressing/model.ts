@@ -1,29 +1,29 @@
-export type ClothingSlot = 'top' | 'bottom' | 'accessory'
+export type ClothingSlot = 'face' | 'top' | 'bottom' | 'shoes' | 'accessory'
 
-export type CharacterId = 'nova' | 'mika' | 'sky'
+export type CharacterId = 'luna' | 'sol' | 'leo' | 'max'
 
-export type RunwayId = 'midnight' | 'rose' | 'aqua' | 'golden'
+export type RunwayId = 'pasarela' | 'parque' | 'tranqui' | 'skate'
 
 export interface CharacterDefinition {
   id: CharacterId
   name: string
-  skin: number
-  hair: number
+  bodySrc: string
+  faceSrc: string
   accent: number
 }
 
 export interface RunwayDefinition {
   id: RunwayId
   name: string
-  colors: [string, string]
+  imageSrc: string
+  desktopImageSrc?: string
 }
 
 export interface ClothingItem {
   id: string
   slot: ClothingSlot
   name: string
-  color: string
-  accent: string
+  imageSrc: string
   description: string
 }
 

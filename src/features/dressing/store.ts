@@ -1,11 +1,11 @@
 import { create } from 'zustand'
 import type { DressingState } from './model'
 
-const emptyOutfit = { top: null, bottom: null, accessory: null }
+const emptyOutfit = { face: null, top: null, bottom: null, shoes: null, accessory: null }
 
 export const useDressingStore = create<DressingState>((set) => ({
-  activeCharacterId: 'nova',
-  activeRunwayId: 'midnight',
+  activeCharacterId: 'luna',
+  activeRunwayId: 'pasarela',
   outfit: emptyOutfit,
   wardrobeOpen: false,
   effectNonce: 0,

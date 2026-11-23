@@ -14,7 +14,7 @@ export function RunwayPicker() {
           aria-label={`Use ${runway.name} runway`}
           aria-pressed={activeRunwayId === runway.id}
           onClick={() => selectRunway(runway.id)}
-          style={{ background: `linear-gradient(135deg, ${runway.colors[0]}, ${runway.colors[1]})` }}
+          style={{ backgroundImage: `url("${runway.imageSrc}")` }}
         />
       ))}
     </div>

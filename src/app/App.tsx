@@ -17,8 +17,10 @@ export function App() {
     character: getCharacter(activeCharacterId),
     runway: getRunway(activeRunwayId),
     outfit: {
+      face: getItem(outfit.face),
       top: getItem(outfit.top),
       bottom: getItem(outfit.bottom),
+      shoes: getItem(outfit.shoes),
       accessory: getItem(outfit.accessory),
     },
     effectNonce,
@@ -41,7 +43,7 @@ export function App() {
         </header>
 
         <div className="scene-title" aria-live="polite">
-          <span className="eyebrow">Runway 01</span>
+          <span className="eyebrow">Choose a face, make it yours</span>
           <p>{sceneModel.character.name} is ready to style.</p>
         </div>
 

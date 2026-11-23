@@ -1,9 +1,8 @@
-import type { CSSProperties } from 'react'
 import { slotLabels, wardrobeItems } from '../catalog'
 import type { ClothingSlot } from '../model'
 import { useDressingStore } from '../store'
 
-const slots: ClothingSlot[] = ['top', 'bottom', 'accessory']
+const slots: ClothingSlot[] = ['face', 'top', 'bottom', 'shoes', 'accessory']
 
 export function Wardrobe() {
   const wardrobeOpen = useDressingStore((state) => state.wardrobeOpen)
@@ -43,8 +42,8 @@ export function Wardrobe() {
                     onClick={() => equip(item)}
                     aria-pressed={selected}
                   >
-                    <span className={`garment-preview ${item.slot}`} style={{ '--garment': item.color, '--trim': item.accent } as CSSProperties}>
-                      <span />
+                    <span className={`garment-preview ${item.slot}`}>
+                      <img src={item.imageSrc} alt="" />
                     </span>
                     <strong>{item.name}</strong>
                     <small>{item.description}</small>

@@ -1,33 +1,49 @@
 import type { CharacterDefinition, ClothingItem, ClothingSlot, RunwayDefinition } from './model'
 
 export const characters: CharacterDefinition[] = [
-  { id: 'nova', name: 'Nova', skin: 0xe5ad8c, hair: 0x24171c, accent: 0xff7aa5 },
-  { id: 'mika', name: 'Mika', skin: 0xb96f4a, hair: 0x211829, accent: 0x8ce0d0 },
-  { id: 'sky', name: 'Sky', skin: 0x8f533e, hair: 0x10131b, accent: 0xf8c95f },
+  { id: 'luna', name: 'Luna', bodySrc: '/assets/CUERPOS BASE/CUERPO MUJER.png', faceSrc: '/assets/CABELLO/CABELLO 01.png', accent: 0xff7aa5 },
+  { id: 'sol', name: 'Sol', bodySrc: '/assets/CUERPOS BASE/MODIFICACION CUERPO MUJER.png', faceSrc: '/assets/CABELLO/CABELLO 02.png', accent: 0x8ce0d0 },
+  { id: 'leo', name: 'Leo', bodySrc: '/assets/CUERPOS BASE/CUERPO D HOMBRE.png', faceSrc: '/assets/CABELLO/R HOMBRE 01.png', accent: 0xf8c95f },
+  { id: 'max', name: 'Max', bodySrc: '/assets/CUERPOS BASE/MODIFICACION CUERPO HOMBRE.png', faceSrc: '/assets/CABELLO/R HOMBRE 02.png', accent: 0x7daeff },
 ]
 
 export const runways: RunwayDefinition[] = [
-  { id: 'midnight', name: 'Midnight', colors: ['#11112a', '#39366d'] },
-  { id: 'rose', name: 'Rose room', colors: ['#30172e', '#c84975'] },
-  { id: 'aqua', name: 'Aqua glow', colors: ['#092a3b', '#1ba8b2'] },
-  { id: 'golden', name: 'Golden hour', colors: ['#4a2718', '#d58942'] },
+  { id: 'pasarela', name: 'Pasarela', imageSrc: '/assets/FONDOS/PASARELA.png' },
+  { id: 'parque', name: 'Parque', imageSrc: '/assets/FONDOS/PARQUE.png', desktopImageSrc: '/assets/FONDOS/PARQUE HORIZONTAL.png' },
+  { id: 'tranqui', name: 'Tranqui', imageSrc: '/assets/FONDOS/TRANQUI.png' },
+  { id: 'skate', name: 'Skate', imageSrc: '/assets/FONDOS/SKATE.png' },
 ]
 
 export const wardrobeItems: ClothingItem[] = [
-  { id: 'top-cloud', slot: 'top', name: 'Cloud tee', color: '#F5F3FF', accent: '#C4B5FD', description: 'Soft cropped tee' },
-  { id: 'top-berry', slot: 'top', name: 'Berry knit', color: '#EC4899', accent: '#F9A8D4', description: 'Fitted ribbed knit' },
-  { id: 'top-lime', slot: 'top', name: 'Lime jacket', color: '#B5E550', accent: '#395329', description: 'Statement jacket' },
-  { id: 'bottom-ink', slot: 'bottom', name: 'Ink cargos', color: '#202436', accent: '#697491', description: 'Relaxed cargo trousers' },
-  { id: 'bottom-denim', slot: 'bottom', name: 'Denim skirt', color: '#4A71B8', accent: '#A0B9E8', description: 'High-rise mini skirt' },
-  { id: 'bottom-plum', slot: 'bottom', name: 'Plum flares', color: '#713C80', accent: '#D4A7DD', description: 'Soft flare trousers' },
-  { id: 'accessory-pearl', slot: 'accessory', name: 'Pearl bag', color: '#F9F1E7', accent: '#D3B99E', description: 'Mini shoulder bag' },
-  { id: 'accessory-star', slot: 'accessory', name: 'Star clips', color: '#F9D259', accent: '#FFF2A7', description: 'Two sparkle clips' },
-  { id: 'accessory-shade', slot: 'accessory', name: 'Sunset shades', color: '#F36E5A', accent: '#241C38', description: 'Tinted sunglasses' },
+  { id: 'face-curls', slot: 'face', name: 'Curly', imageSrc: '/assets/CABELLO/CABELLO 01.png', description: 'Warm curls' },
+  { id: 'face-wave', slot: 'face', name: 'Wavy', imageSrc: '/assets/CABELLO/CABELLO 02.png', description: 'Soft waves' },
+  { id: 'face-bob', slot: 'face', name: 'Bob', imageSrc: '/assets/CABELLO/CABELLO 03.png', description: 'Short bob' },
+  { id: 'face-pink', slot: 'face', name: 'Pink', imageSrc: '/assets/CABELLO/CABELLO 04.png', description: 'Pink style' },
+  { id: 'face-man-one', slot: 'face', name: 'Classic', imageSrc: '/assets/CABELLO/R HOMBRE 01.png', description: 'Classic cut' },
+  { id: 'face-man-two', slot: 'face', name: 'Fade', imageSrc: '/assets/CABELLO/R HOMBRE 02.png', description: 'Fresh fade' },
+  { id: 'face-man-three', slot: 'face', name: 'Coils', imageSrc: '/assets/CABELLO/R HOMBRE 03.png', description: 'Defined coils' },
+  { id: 'top-one', slot: 'top', name: 'Top 01', imageSrc: '/assets/CAMISAS/camisa 01.png', description: 'Sleeveless top' },
+  { id: 'top-two', slot: 'top', name: 'Top 02', imageSrc: '/assets/CAMISAS/CAMISA 02.png', description: 'Statement top' },
+  { id: 'top-three', slot: 'top', name: 'Top 03', imageSrc: '/assets/CAMISAS/CAMISA 03.png', description: 'Everyday top' },
+  { id: 'jacket-one', slot: 'top', name: 'Jacket 01', imageSrc: '/assets/CHAQUETAS/CHQUETA 01 FIGURIN MODIFICADO.png', description: 'Styled jacket' },
+  { id: 'jacket-two', slot: 'top', name: 'Jacket 02', imageSrc: '/assets/CHAQUETAS/CHAQUETA 02.png', description: 'Layered jacket' },
+  { id: 'jacket-three', slot: 'top', name: 'Jacket 03', imageSrc: '/assets/CHAQUETAS/CHAQUETA 03.png', description: 'Outer layer' },
+  { id: 'bottom-one', slot: 'bottom', name: 'Bottom 01', imageSrc: '/assets/PANTALONES/PANTALON 01.png', description: 'First look' },
+  { id: 'bottom-two', slot: 'bottom', name: 'Bottom 02', imageSrc: '/assets/PANTALONES/PANTALON 02.png', description: 'Second look' },
+  { id: 'bottom-three', slot: 'bottom', name: 'Bottom 03', imageSrc: '/assets/PANTALONES/PANTALON 03.png', description: 'Third look' },
+  { id: 'bottom-four', slot: 'bottom', name: 'Bottom 04', imageSrc: '/assets/PANTALONES/PANTALON 04.png', description: 'Fourth look' },
+  { id: 'shoes-one', slot: 'shoes', name: 'Shoes 01', imageSrc: '/assets/ZAPATOS/ZAPATOS 01.png', description: 'First pair' },
+  { id: 'shoes-two', slot: 'shoes', name: 'Shoes 02', imageSrc: '/assets/ZAPATOS/ZAPATOS 02.png', description: 'Second pair' },
+  { id: 'accessory-one', slot: 'accessory', name: 'Accessory 01', imageSrc: '/assets/ACCESORIOS/ACCESORIO 1.png', description: 'Finishing touch' },
+  { id: 'accessory-two', slot: 'accessory', name: 'Accessory 02', imageSrc: '/assets/ACCESORIOS/ACCESORIO 2.png', description: 'Finishing touch' },
+  { id: 'accessory-three', slot: 'accessory', name: 'Accessory 03', imageSrc: '/assets/ACCESORIOS/ACCESORIO 03.png', description: 'Finishing touch' },
 ]
 
 export const slotLabels: Record<ClothingSlot, string> = {
+  face: 'Faces',
   top: 'Tops',
   bottom: 'Bottoms',
+  shoes: 'Shoes',
   accessory: 'Accessories',
 }
 

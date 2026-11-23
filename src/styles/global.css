@@ -29,9 +29,9 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
   isolation: isolate;
 }
 
-.character-stage, .character-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
-.character-stage { z-index: -2; }
-.character-stage canvas { object-fit: cover; }
+.character-stage { position: absolute; inset: 0; z-index: -2; overflow: hidden; background: var(--mobile-background) center / cover no-repeat; }
+.character-asset-stack { position: absolute; left: 50%; bottom: 1.8%; width: min(96vw, 48dvh); aspect-ratio: 1 / 2; transform: translateX(-50%); animation: character-arrive .42s cubic-bezier(.2,.9,.2,1) both; }
+.character-asset-stack img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; user-select: none; pointer-events: none; }
 .screen-shade {
   position: absolute;
   inset: 0;
@@ -85,7 +85,7 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 .avatar-button.is-selected .avatar-swatch { box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--avatar-accent); transform: translateY(-2px); }
 .avatar-button.is-selected { color: #fff; }
 .runway-picker { display: flex; gap: .5rem; margin-top: .43rem; }
-.runway-dot { width: 24px; height: 24px; border-radius: 99px; border: 2px solid rgba(255,255,255,.6); cursor: pointer; padding: 0; transition: .2s ease; }
+.runway-dot { width: 24px; height: 24px; border-radius: 99px; border: 2px solid rgba(255,255,255,.6); cursor: pointer; padding: 0; transition: .2s ease; background-position: center; background-size: cover; }
 .runway-dot.is-selected { border-color: white; box-shadow: 0 0 0 3px rgba(255,255,255,.28); transform: scale(1.1); }
 
 .wardrobe-panel {
@@ -120,20 +120,20 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
 .clothing-card strong, .clothing-card small { display: block; }
 .clothing-card strong { font-size: .78rem; margin-top: .45rem; }
 .clothing-card small { margin-top: .18rem; color: rgba(255,255,255,.59); font-size: .64rem; line-height: 1.2; }
-.garment-preview { background: linear-gradient(145deg, color-mix(in srgb, var(--garment), #fff 20%), color-mix(in srgb, var(--garment), #000 20%)); border-radius: .72rem; width: 100%; height: 72px; display: grid; place-items: center; overflow: hidden; }
-.garment-preview span { display: block; background: var(--garment); border: 3px solid var(--trim); }
-.garment-preview.top span { width: 52px; height: 45px; border-radius: 11px 11px 17px 17px; }
-.garment-preview.bottom span { width: 39px; height: 58px; clip-path: polygon(0 0,100% 0,85% 100%,55% 100%,50% 55%,45% 100%,15% 100%); }
-.garment-preview.accessory span { width: 45px; height: 33px; border-radius: 9px; position: relative; }
-.garment-preview.accessory span::before { content: ''; position: absolute; width: 20px; height: 14px; border: 3px solid var(--trim); border-bottom: 0; border-radius: 16px 16px 0 0; left: 9px; top: -15px; }
+.garment-preview { background: rgba(255,255,255,.09); border-radius: .72rem; width: 100%; height: 72px; display: grid; place-items: center; overflow: hidden; }
+.garment-preview img { width: 58px; height: 116px; object-fit: contain; }
+.garment-preview.face img { transform: translateY(18px); }
 .clear-button { margin: auto 1.1rem max(1.1rem, env(safe-area-inset-bottom)); justify-content: center; background: transparent; color: rgba(255,255,255,.78); }
 
 @keyframes rise-in { from { transform: translateY(105%); } to { transform: translateY(0); } }
+@keyframes character-arrive { from { opacity: 0; transform: translateX(-50%) translateY(1.2rem); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
 @media (min-width: 720px) {
   .game-screen { min-height: 100dvh; }
   .wardrobe-panel { top: 0; height: 100dvh; border-radius: 1.8rem 0 0 1.8rem; border-bottom: 1px solid rgba(255,255,255,.17); animation-name: slide-in; }
   .game-controls { width: calc(100% - min(100%, 34rem)); }
   .game-header { padding-right: calc(min(100%, 34rem) + 1.4rem); }
+  .character-stage { background-image: var(--desktop-background); }
+  .character-asset-stack { width: min(48vw, 57dvh); bottom: 1%; }
 }
 @keyframes slide-in { from { transform: translateX(105%); } to { transform: translateX(0); } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
