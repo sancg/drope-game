@@ -1,3 +1,4 @@
+import { forwardRef } from 'react';
 import type { CSSProperties } from 'react';
 import type {
   CharacterDefinition,
@@ -33,7 +34,10 @@ function gridStyle(frame: SpriteGridFrame): CSSProperties {
 }
 
 /** One 1500 x 2100 grid controls the body and every layer, regardless of PNG crop size. */
-export function CharacterStage({ scene }: CharacterStageProps) {
+export const CharacterStage = forwardRef<HTMLDivElement, CharacterStageProps>(function CharacterStage(
+  { scene },
+  ref,
+) {
   const { character, runway, outfit } = scene;
   const usesPoseBase = outfit.top?.id === 'jacket-pose';
   const backgroundStyle = {
@@ -86,6 +90,7 @@ export function CharacterStage({ scene }: CharacterStageProps) {
       style={backgroundStyle}
       aria-label={`${character.name} on ${runway.name}`}
       role='img'
+      ref={ref}
     >
       <div className='character-asset-stack'>
         {layers.map((layer) => (
@@ -101,4 +106,4 @@ export function CharacterStage({ scene }: CharacterStageProps) {
       </div>
     </div>
   );
-}
+});

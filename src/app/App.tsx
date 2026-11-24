@@ -1,10 +1,11 @@
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 import { getCharacter, getItem, getRunway } from '../features/dressing/catalog';
 import { CharacterPicker } from '../features/dressing/components/CharacterPicker';
 import { RunwayPicker } from '../features/dressing/components/RunwayPicker';
 import { Wardrobe } from '../features/dressing/components/Wardrobe';
 import { useDressingStore } from '../features/dressing/store';
 import { CharacterStage } from '../features/game/CharacterStage';
+import { ShareLookButton } from '../features/sharing/ShareLookButton';
 
 export function App() {
   const activeCharacterId = useDressingStore((state) => state.activeCharacterId);
@@ -13,6 +14,9 @@ export function App() {
   const effectNonce = useDressingStore((state) => state.effectNonce);
   const wardrobeOpen = useDressingStore((state) => state.wardrobeOpen);
   const toggleWardrobe = useDressingStore((state) => state.toggleWardrobe);
+  const stageRef = useRef<HTMLDivElement>(null);
+  // Faces and accessories are optional finishing touches, not required to share a look.
+  const isLookComplete = Boolean(outfit.top && outfit.bottom && outfit.shoes);
   const sceneModel = useMemo(
     () => ({
       character: getCharacter(activeCharacterId),
@@ -32,7 +36,7 @@ export function App() {
   return (
     <main className={`app-shell ${wardrobeOpen ? 'wardrobe-is-open' : ''}`}>
       <section className='game-screen' aria-label='Runway dressing room'>
-        <CharacterStage scene={sceneModel} />
+        <CharacterStage ref={stageRef} scene={sceneModel} />
         <div className='screen-shade' />
         <header className='game-header'>
           <div className='brand-lockup'>
@@ -63,6 +67,7 @@ export function App() {
             <RunwayPicker />
           </div>
         </footer>
+        <ShareLookButton stageRef={stageRef} isLookComplete={isLookComplete} />
       </section>
       <Wardrobe />
     </main>

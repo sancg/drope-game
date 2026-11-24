@@ -167,6 +167,45 @@ button:focus-visible {
   justify-content: space-between;
   align-items: end;
 }
+.share-look-control {
+  position: absolute;
+  z-index: 1;
+  right: 1.1rem;
+  bottom: calc(max(1.25rem, env(safe-area-inset-bottom)) + 6.3rem);
+  max-width: 12.25rem;
+  text-align: right;
+}
+.share-look-button {
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 999px;
+  min-height: 48px;
+  padding: 0.7rem 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: #271322;
+  background: #ffd4e6;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.23);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.18s ease, opacity 0.18s ease;
+}
+.share-look-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+.share-look-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.58;
+}
+.share-look-button span {
+  font-size: 1.25rem;
+  line-height: 0.8;
+}
+.share-look-control p {
+  margin: 0.42rem 0 0 auto;
+  color: rgba(255, 255, 255, 0.78);
+  font: 500 0.57rem/1.35 'DM Mono', monospace;
+}
 .character-picker,
 .runway-control {
   padding: 0.7rem;
@@ -402,6 +441,9 @@ button:focus-visible {
   }
   .game-controls {
     width: calc(100% - min(100%, 34rem));
+  }
+  .share-look-control {
+    right: calc(min(100%, 34rem) + 1.4rem);
   }
   .game-header {
     padding-right: calc(min(100%, 34rem) + 1.4rem);
