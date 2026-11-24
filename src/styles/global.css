@@ -91,6 +91,10 @@ button:focus-visible {
   z-index: 100;
 }
 
+.stage-layer--accessory {
+  z-index: 101;
+}
+
 .game-header {
   padding: max(1.25rem, env(safe-area-inset-top)) 1.1rem 0;
   display: flex;
