@@ -161,7 +161,7 @@ button:focus-visible {
 .game-controls {
   position: absolute;
   padding: 0 1.1rem max(1.25rem, env(safe-area-inset-bottom));
-  bottom: 0;
+  bottom: 60px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -171,7 +171,7 @@ button:focus-visible {
   position: absolute;
   z-index: 1;
   right: 1.1rem;
-  bottom: calc(max(1.25rem, env(safe-area-inset-bottom)) + 6.3rem);
+  bottom: calc(max(1.25rem, env(safe-area-inset-bottom)) + 11.3rem);
   max-width: 12.25rem;
   text-align: right;
 }
@@ -188,7 +188,9 @@ button:focus-visible {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.23);
   font-weight: 700;
   cursor: pointer;
-  transition: transform 0.18s ease, opacity 0.18s ease;
+  transition:
+    transform 0.18s ease,
+    opacity 0.18s ease;
 }
 .share-look-button:hover:not(:disabled) {
   transform: translateY(-2px);
@@ -204,7 +206,9 @@ button:focus-visible {
 .share-look-control p {
   margin: 0.42rem 0 0 auto;
   color: rgba(255, 255, 255, 0.78);
-  font: 500 0.57rem/1.35 'DM Mono', monospace;
+  font:
+    500 0.57rem/1.35 'DM Mono',
+    monospace;
 }
 .character-picker,
 .runway-control {
