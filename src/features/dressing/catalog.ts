@@ -240,11 +240,11 @@ export const wardrobeItems: ClothingItem[] = [
 ];
 
 export const slotLabels: Record<ClothingSlot, string> = {
-  face: 'Faces',
-  top: 'Tops',
-  bottom: 'Bottoms',
-  shoes: 'Shoes',
-  accessory: 'Accessories',
+  face: 'Rostros',
+  top: 'Superior',
+  bottom: 'Inferior',
+  shoes: 'Zapatos',
+  accessory: 'Accesorios',
 };
 
 export function getCharacter(id: CharacterDefinition['id']) {
