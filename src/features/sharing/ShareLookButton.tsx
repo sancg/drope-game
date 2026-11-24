@@ -3,7 +3,8 @@ import { useState } from 'react';
 import type { RefObject } from 'react';
 
 // Set VITE_INSTAGRAM_HANDLE in Netlify once the account name is finalized.
-const INSTAGRAM_HANDLE = import.meta.env.VITE_INSTAGRAM_HANDLE?.replace(/^@/, '') || 'to_be_defined';
+const INSTAGRAM_HANDLE =
+  import.meta.env.VITE_INSTAGRAM_HANDLE?.replace(/^@/, '') || 'moua_studio';
 const shareText = `Mi look de Studio Moua ✦ @${INSTAGRAM_HANDLE}`;
 
 interface ShareLookButtonProps {
@@ -12,7 +13,9 @@ interface ShareLookButtonProps {
 }
 
 async function canvasToFile(canvas: HTMLCanvasElement): Promise<File> {
-  const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/png'));
+  const blob = await new Promise<Blob | null>((resolve) =>
+    canvas.toBlob(resolve, 'image/png'),
+  );
 
   if (!blob) {
     throw new Error('The look image could not be created.');
@@ -83,9 +86,13 @@ export function ShareLookButton({ stageRef, isLookComplete }: ShareLookButtonPro
       </button>
       {!isLookComplete && <p role='status'>Completa tu look para compartirlo.</p>}
       {status === 'downloaded' && (
-        <p role='status'>Imagen descargada. Súbela a Instagram y etiqueta @{INSTAGRAM_HANDLE}.</p>
+        <p role='status'>
+          Imagen descargada. Súbela a Instagram y etiqueta @{INSTAGRAM_HANDLE}.
+        </p>
       )}
-      {status === 'error' && <p role='status'>No pudimos crear la imagen. Inténtalo de nuevo.</p>}
+      {status === 'error' && (
+        <p role='status'>No pudimos crear la imagen. Inténtalo de nuevo.</p>
+      )}
     </div>
   );
 }
