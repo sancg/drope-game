@@ -6,6 +6,40 @@ import type { RefObject } from 'react';
 const INSTAGRAM_HANDLE =
   import.meta.env.VITE_INSTAGRAM_HANDLE?.replace(/^@/, '') || 'moua_studio';
 const shareText = `Mi look de Studio Moua ✦ @${INSTAGRAM_HANDLE}`;
+const EXPORT_WIDTH = 1080;
+const EXPORT_HEIGHT = 1350;
+const EXPORT_CHARACTER_WIDTH = 648;
+
+/**
+ * html2canvas creates a separate document to render the image. Give that clone
+ * a fixed 4:5 portrait layout instead of inheriting the browser's responsive
+ * viewport and dynamic-viewport (`dvh`) calculations.
+ */
+function centerCaptureFrame(documentClone: Document, originalStage: HTMLDivElement) {
+  const stage = documentClone.querySelector<HTMLDivElement>('.character-stage');
+  const character = documentClone.querySelector<HTMLDivElement>('.character-asset-stack');
+
+  if (!stage || !character) return;
+
+  const mobileBackground = originalStage.style.getPropertyValue('--mobile-background');
+  const important = 'important';
+
+  stage.style.setProperty('position', 'relative', important);
+  stage.style.setProperty('inset', 'auto', important);
+  stage.style.setProperty('width', `${EXPORT_WIDTH}px`, important);
+  stage.style.setProperty('height', `${EXPORT_HEIGHT}px`, important);
+  stage.style.setProperty('background-image', mobileBackground, important);
+  stage.style.setProperty('background-size', 'cover', important);
+  stage.style.setProperty('background-position', 'center', important);
+
+  character.style.setProperty('left', '50%', important);
+  character.style.setProperty('right', 'auto', important);
+  character.style.setProperty('top', 'auto', important);
+  character.style.setProperty('bottom', '5%', important);
+  character.style.setProperty('width', `${EXPORT_CHARACTER_WIDTH}px`, important);
+  character.style.setProperty('transform', 'translateX(-50%)', important);
+  character.style.setProperty('animation', 'none', important);
+}
 
 interface ShareLookButtonProps {
   stageRef: RefObject<HTMLDivElement | null>;
@@ -45,9 +79,14 @@ export function ShareLookButton({ stageRef, isLookComplete }: ShareLookButtonPro
     try {
       const canvas = await html2canvas(stage, {
         backgroundColor: '#0e0d19',
+        width: EXPORT_WIDTH,
+        height: EXPORT_HEIGHT,
+        windowWidth: EXPORT_WIDTH,
+        windowHeight: EXPORT_HEIGHT,
         scale: Math.min(window.devicePixelRatio || 1, 2),
         useCORS: true,
         logging: false,
+        onclone: (documentClone) => centerCaptureFrame(documentClone, stage),
       });
       const image = await canvasToFile(canvas);
       const shareData = { files: [image], text: shareText, title: 'Mi look de Studio Moua' };
