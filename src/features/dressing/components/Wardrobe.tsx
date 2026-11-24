@@ -1,4 +1,4 @@
-import { slotLabels, wardrobeItems } from '../catalog'
+import { getWardrobeItems, slotLabels } from '../catalog'
 import type { ClothingSlot } from '../model'
 import { useDressingStore } from '../store'
 
@@ -6,6 +6,7 @@ const slots: ClothingSlot[] = ['face', 'top', 'bottom', 'shoes', 'accessory']
 
 export function Wardrobe() {
   const wardrobeOpen = useDressingStore((state) => state.wardrobeOpen)
+  const activeCharacterId = useDressingStore((state) => state.activeCharacterId)
   const outfit = useDressingStore((state) => state.outfit)
   const equip = useDressingStore((state) => state.equip)
   const toggleWardrobe = useDressingStore((state) => state.toggleWardrobe)
@@ -26,14 +27,16 @@ export function Wardrobe() {
       </header>
 
       <div className="wardrobe-scroll">
-        {slots.map((slot) => (
+        {slots.map((slot) => {
+          const items = getWardrobeItems(slot, activeCharacterId === 'luna' ? 'woman' : 'man')
+          return (
           <section className="clothing-section" key={slot} aria-labelledby={`${slot}-heading`}>
             <div className="section-heading">
               <h2 id={`${slot}-heading`}>{slotLabels[slot]}</h2>
-              <span>{wardrobeItems.filter((item) => item.slot === slot).length} looks</span>
+              <span>{items.length} looks</span>
             </div>
             <div className="item-carousel">
-              {wardrobeItems.filter((item) => item.slot === slot).map((item) => {
+              {items.map((item) => {
                 const selected = outfit[slot] === item.id
                 return (
                   <button
@@ -52,7 +55,8 @@ export function Wardrobe() {
               })}
             </div>
           </section>
-        ))}
+          )
+        })}
       </div>
 
       <button className="clear-button" onClick={clearOutfit}>Clear outfit</button>

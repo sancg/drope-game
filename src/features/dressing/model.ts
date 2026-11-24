@@ -1,6 +1,8 @@
 export type ClothingSlot = 'face' | 'top' | 'bottom' | 'shoes' | 'accessory'
 
-export type CharacterId = 'luna' | 'sol' | 'leo' | 'max'
+export type CharacterId = 'luna' | 'max'
+
+export type FaceGroup = 'woman' | 'man'
 
 export type RunwayId = 'pasarela' | 'parque' | 'tranqui' | 'skate'
 
@@ -8,7 +10,9 @@ export interface CharacterDefinition {
   id: CharacterId
   name: string
   bodySrc: string
+  poseBodySrc: string
   faceSrc: string
+  faceGroup: FaceGroup
   accent: number
 }
 
@@ -25,6 +29,16 @@ export interface ClothingItem {
   name: string
   imageSrc: string
   description: string
+  faceGroup?: FaceGroup
+  /** Placement of a cropped PNG on the shared 1500 x 2100 base-body canvas. */
+  grid?: SpriteGridFrame
+}
+
+export interface SpriteGridFrame {
+  x: number
+  y: number
+  width: number
+  height: number
 }
 
 export type Outfit = Record<ClothingSlot, string | null>

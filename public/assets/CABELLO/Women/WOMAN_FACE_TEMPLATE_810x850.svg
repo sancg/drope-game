@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="810" height="850" viewBox="0 0 810 850">
+  <title>Women face alignment template, 810 by 850 pixels</title>
+  <desc>Transparent artboard. Place the face artwork behind these guides. Align the eye line, chin line, neck center, and maximum hair bounds consistently for every women face.</desc>
+  <g fill="none" stroke="#00a6ff" stroke-width="2" stroke-dasharray="10 8" opacity="0.9">
+    <path d="M405 0V850" />
+    <path d="M40 370H770" />
+    <path d="M40 540H770" />
+    <path d="M40 665H770" />
+    <rect x="50" y="45" width="710" height="760" rx="24" />
+  </g>
+  <g fill="#0077b6" font-family="Arial, sans-serif" font-size="20" font-weight="700" paint-order="stroke" stroke="#fff" stroke-width="5">
+    <text x="62" y="355">EYE LINE — keep pupil centers on this guide</text>
+    <text x="62" y="525">CHIN — keep chin tip on this guide</text>
+    <text x="62" y="650">NECK BASE — align neck bottom here</text>
+    <text x="60" y="35">HAIR SAFE AREA</text>
+    <text x="415" y="825">CENTER</text>
+  </g>
+</svg>

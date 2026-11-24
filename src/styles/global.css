@@ -8,11 +8,26 @@
   text-rendering: optimizeLegibility;
 }
 
-* { box-sizing: border-box; }
-html, body, #root { min-height: 100%; margin: 0; }
-body { min-width: 320px; overflow-x: hidden; }
-button { font: inherit; }
-button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+}
+button {
+  font: inherit;
+}
+button:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 3px;
+}
 
 .app-shell {
   min-height: 100dvh;
@@ -29,15 +44,51 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
   isolation: isolate;
 }
 
-.character-stage { position: absolute; inset: 0; z-index: -2; overflow: hidden; background: var(--mobile-background) center / cover no-repeat; }
-.character-asset-stack { position: absolute; left: 50%; bottom: 1.8%; width: min(96vw, 48dvh); aspect-ratio: 1 / 2; transform: translateX(-50%); animation: character-arrive .42s cubic-bezier(.2,.9,.2,1) both; }
-.character-asset-stack img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; user-select: none; pointer-events: none; }
+.character-stage {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  background: var(--mobile-background) center / cover no-repeat;
+}
+.character-asset-stack {
+  position: absolute;
+  left: 50%;
+  bottom: 5%;
+  width: min(96vw, 48dvh);
+  aspect-ratio: 1500 / 2100;
+  transform: translateX(-50%);
+  animation: character-arrive 0.42s cubic-bezier(0.2, 0.9, 0.2, 1) both;
+}
+.stage-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+}
+.stage-layer--gridded {
+  inset: auto;
+  object-fit: fill;
+}
 .screen-shade {
   position: absolute;
   inset: 0;
   z-index: -1;
   pointer-events: none;
-  background: linear-gradient(180deg, rgba(10, 10, 25, .42), transparent 35%, transparent 68%, rgba(9, 8, 19, .7));
+  background: linear-gradient(
+    180deg,
+    rgba(10, 10, 25, 0.42),
+    transparent 35%,
+    transparent 68%,
+    rgba(9, 8, 19, 0.7)
+  );
+}
+
+.stage-layer--bottom {
+  z-index: 100;
 }
 
 .game-header {
@@ -46,28 +97,62 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
   align-items: center;
   justify-content: space-between;
 }
-.brand-lockup { display: flex; gap: .45rem; align-items: center; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; font-size: .85rem; }
-.brand-mark { font-size: 1.1rem; color: #ffd5e6; }
-.wardrobe-button, .clear-button {
-  border: 1px solid rgba(255, 255, 255, .25);
-  background: rgba(20, 18, 38, .57);
+.brand-lockup {
+  display: flex;
+  gap: 0.45rem;
+  align-items: center;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+.brand-mark {
+  font-size: 1.1rem;
+  color: #ffd5e6;
+}
+.wardrobe-button,
+.clear-button {
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(20, 18, 38, 0.57);
   color: #fff;
   cursor: pointer;
   border-radius: 999px;
   min-height: 46px;
-  padding: .65rem .85rem;
+  padding: 0.65rem 0.85rem;
   display: inline-flex;
-  gap: .5rem;
+  gap: 0.5rem;
   align-items: center;
   backdrop-filter: blur(9px);
   -webkit-backdrop-filter: blur(9px);
   font-weight: 600;
 }
-.wardrobe-icon { color: #ffd4e6; font-size: 1.35rem; line-height: .8; transform: rotate(45deg); }
+.wardrobe-icon {
+  color: #ffd4e6;
+  font-size: 1.35rem;
+  line-height: 0.8;
+  transform: rotate(45deg);
+}
 
-.scene-title { position: absolute; top: 20%; left: 1.25rem; max-width: 10rem; }
-.scene-title p { margin: .32rem 0 0; font-size: 1.2rem; line-height: 1.05; font-weight: 600; }
-.eyebrow { color: rgba(255,255,255,.72); font: 500 .66rem/1 "DM Mono", monospace; text-transform: uppercase; letter-spacing: .12em; }
+.scene-title {
+  position: absolute;
+  top: 20%;
+  left: 1.25rem;
+  max-width: 10rem;
+}
+.scene-title p {
+  margin: 0.32rem 0 0;
+  font-size: 1.2rem;
+  line-height: 1.05;
+  font-weight: 600;
+}
+.eyebrow {
+  color: rgba(255, 255, 255, 0.72);
+  font:
+    500 0.66rem/1 'DM Mono',
+    monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
 
 .game-controls {
   position: absolute;
@@ -78,15 +163,69 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
   justify-content: space-between;
   align-items: end;
 }
-.character-picker, .runway-control { padding: .7rem; border: 1px solid rgba(255,255,255,.16); border-radius: 1rem; background: rgba(18, 16, 35, .46); backdrop-filter: blur(8px); }
-.avatar-list { display: flex; gap: .45rem; margin-top: .4rem; }
-.avatar-button { appearance: none; border: 0; color: rgba(255,255,255,.73); background: transparent; padding: 0; display: grid; justify-items: center; gap: .25rem; cursor: pointer; font-size: .62rem; }
-.avatar-swatch { background: var(--avatar-accent); border: 2px solid rgba(255,255,255,.55); width: 29px; height: 29px; border-radius: 50%; transition: .18s ease; }
-.avatar-button.is-selected .avatar-swatch { box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--avatar-accent); transform: translateY(-2px); }
-.avatar-button.is-selected { color: #fff; }
-.runway-picker { display: flex; gap: .5rem; margin-top: .43rem; }
-.runway-dot { width: 24px; height: 24px; border-radius: 99px; border: 2px solid rgba(255,255,255,.6); cursor: pointer; padding: 0; transition: .2s ease; background-position: center; background-size: cover; }
-.runway-dot.is-selected { border-color: white; box-shadow: 0 0 0 3px rgba(255,255,255,.28); transform: scale(1.1); }
+.character-picker,
+.runway-control {
+  padding: 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 1rem;
+  background: rgba(18, 16, 35, 0.46);
+  backdrop-filter: blur(8px);
+}
+.avatar-list {
+  display: flex;
+  gap: 0.45rem;
+  margin-top: 0.4rem;
+}
+.avatar-button {
+  appearance: none;
+  border: 0;
+  color: rgba(255, 255, 255, 0.73);
+  background: transparent;
+  padding: 0;
+  display: grid;
+  justify-items: center;
+  gap: 0.25rem;
+  cursor: pointer;
+  font-size: 0.62rem;
+}
+.avatar-swatch {
+  background: var(--avatar-accent);
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  width: 29px;
+  height: 29px;
+  border-radius: 50%;
+  transition: 0.18s ease;
+}
+.avatar-button.is-selected .avatar-swatch {
+  box-shadow:
+    0 0 0 3px #fff,
+    0 0 0 5px var(--avatar-accent);
+  transform: translateY(-2px);
+}
+.avatar-button.is-selected {
+  color: #fff;
+}
+.runway-picker {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.43rem;
+}
+.runway-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 99px;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  padding: 0;
+  transition: 0.2s ease;
+  background-position: center;
+  background-size: cover;
+}
+.runway-dot.is-selected {
+  border-color: white;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.28);
+  transform: scale(1.1);
+}
 
 .wardrobe-panel {
   z-index: 4;
@@ -95,45 +234,195 @@ button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
   bottom: 0;
   width: min(100%, 34rem);
   height: min(84dvh, 48rem);
-  background: rgba(23, 19, 42, .97);
-  border: 1px solid rgba(255,255,255,.17);
+  background: rgba(23, 19, 42, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.17);
   border-bottom: 0;
   border-radius: 1.8rem 1.8rem 0 0;
-  box-shadow: 0 -20px 70px rgba(0,0,0,.32);
+  box-shadow: 0 -20px 70px rgba(0, 0, 0, 0.32);
   display: flex;
   flex-direction: column;
-  animation: rise-in .36s cubic-bezier(.2,.9,.2,1) both;
+  animation: rise-in 0.36s cubic-bezier(0.2, 0.9, 0.2, 1) both;
 }
-.wardrobe-header { padding: 1.2rem 1.1rem .9rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,.1); }
-.wardrobe-header h1 { margin: .2rem 0 0; font-size: 1.75rem; letter-spacing: -.04em; }
-.icon-button { width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.2); background: rgba(255,255,255,.08); color: white; cursor: pointer; border-radius: 50%; font-size: 1.8rem; line-height: 1; }
-.wardrobe-scroll { overflow-y: auto; overscroll-behavior: contain; padding: .8rem 0 1rem; }
-.clothing-section { margin: 0; padding: .75rem 1.1rem; }
-.section-heading { display: flex; align-items: baseline; justify-content: space-between; margin: 0 0 .7rem; }
-.section-heading h2 { font-size: 1.08rem; margin: 0; }
-.section-heading span { font: .63rem "DM Mono", monospace; color: rgba(255,255,255,.57); }
-.item-carousel { display: flex; overflow-x: auto; gap: .75rem; scroll-snap-type: x mandatory; scrollbar-width: none; padding: .1rem .1rem .4rem; }
-.item-carousel::-webkit-scrollbar { display: none; }
-.clothing-card { border: 1px solid rgba(255,255,255,.14); border-radius: 1rem; min-width: 112px; width: 112px; padding: .55rem; text-align: left; color: white; background: rgba(255,255,255,.05); cursor: pointer; scroll-snap-align: start; transition: transform .18s, border-color .18s, background .18s; }
-.clothing-card:hover, .clothing-card.is-selected { border-color: #ffc7df; background: rgba(255, 170, 210, .14); }
-.clothing-card:active { transform: scale(.96); }
-.clothing-card strong, .clothing-card small { display: block; }
-.clothing-card strong { font-size: .78rem; margin-top: .45rem; }
-.clothing-card small { margin-top: .18rem; color: rgba(255,255,255,.59); font-size: .64rem; line-height: 1.2; }
-.garment-preview { background: rgba(255,255,255,.09); border-radius: .72rem; width: 100%; height: 72px; display: grid; place-items: center; overflow: hidden; }
-.garment-preview img { width: 58px; height: 116px; object-fit: contain; }
-.garment-preview.face img { transform: translateY(18px); }
-.clear-button { margin: auto 1.1rem max(1.1rem, env(safe-area-inset-bottom)); justify-content: center; background: transparent; color: rgba(255,255,255,.78); }
+.wardrobe-header {
+  padding: 1.2rem 1.1rem 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.wardrobe-header h1 {
+  margin: 0.2rem 0 0;
+  font-size: 1.75rem;
+  letter-spacing: -0.04em;
+}
+.icon-button {
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 1.8rem;
+  line-height: 1;
+}
+.wardrobe-scroll {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 0.8rem 0 1rem;
+}
+.clothing-section {
+  margin: 0;
+  padding: 0.75rem 1.1rem;
+}
+.section-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 0 0 0.7rem;
+}
+.section-heading h2 {
+  font-size: 1.08rem;
+  margin: 0;
+}
+.section-heading span {
+  font:
+    0.63rem 'DM Mono',
+    monospace;
+  color: rgba(255, 255, 255, 0.57);
+}
+.item-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 0.75rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 0.1rem 0.1rem 0.4rem;
+}
+.item-carousel::-webkit-scrollbar {
+  display: none;
+}
+.clothing-card {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1rem;
+  min-width: 112px;
+  width: 112px;
+  padding: 0.55rem;
+  text-align: left;
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  scroll-snap-align: start;
+  transition:
+    transform 0.18s,
+    border-color 0.18s,
+    background 0.18s;
+}
+.clothing-card:hover,
+.clothing-card.is-selected {
+  border-color: #ffc7df;
+  background: rgba(255, 170, 210, 0.14);
+}
+.clothing-card:active {
+  transform: scale(0.96);
+}
+.clothing-card strong,
+.clothing-card small {
+  display: block;
+}
+.clothing-card strong {
+  font-size: 0.78rem;
+  margin-top: 0.45rem;
+}
+.clothing-card small {
+  margin-top: 0.18rem;
+  color: rgba(255, 255, 255, 0.59);
+  font-size: 0.64rem;
+  line-height: 1.2;
+}
+.garment-preview {
+  background: rgba(255, 255, 255, 0.09);
+  border-radius: 0.72rem;
+  width: 100%;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+.garment-preview img {
+  width: 100%;
+  height: 100%;
+  padding: 0.3rem;
+  object-fit: contain;
+  object-position: center;
+}
+.garment-preview.face img {
+  object-fit: cover;
+  object-position: top center;
+}
+.clear-button {
+  margin: auto 1.1rem max(1.1rem, env(safe-area-inset-bottom));
+  justify-content: center;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.78);
+}
 
-@keyframes rise-in { from { transform: translateY(105%); } to { transform: translateY(0); } }
-@keyframes character-arrive { from { opacity: 0; transform: translateX(-50%) translateY(1.2rem); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
-@media (min-width: 720px) {
-  .game-screen { min-height: 100dvh; }
-  .wardrobe-panel { top: 0; height: 100dvh; border-radius: 1.8rem 0 0 1.8rem; border-bottom: 1px solid rgba(255,255,255,.17); animation-name: slide-in; }
-  .game-controls { width: calc(100% - min(100%, 34rem)); }
-  .game-header { padding-right: calc(min(100%, 34rem) + 1.4rem); }
-  .character-stage { background-image: var(--desktop-background); }
-  .character-asset-stack { width: min(48vw, 57dvh); bottom: 1%; }
+@keyframes rise-in {
+  from {
+    transform: translateY(105%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }
-@keyframes slide-in { from { transform: translateX(105%); } to { transform: translateX(0); } }
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+@keyframes character-arrive {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(1.2rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+@media (min-width: 720px) {
+  .game-screen {
+    min-height: 100dvh;
+  }
+  .wardrobe-panel {
+    top: 0;
+    height: 100dvh;
+    border-radius: 1.8rem 0 0 1.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.17);
+    animation-name: slide-in;
+  }
+  .game-controls {
+    width: calc(100% - min(100%, 34rem));
+  }
+  .game-header {
+    padding-right: calc(min(100%, 34rem) + 1.4rem);
+  }
+  .character-stage {
+    background-image: var(--desktop-background);
+  }
+  .character-asset-stack {
+    width: min(48vw, 57dvh);
+    bottom: -10%;
+  }
+}
+@keyframes slide-in {
+  from {
+    transform: translateX(105%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
